@@ -49,13 +49,17 @@
 
                         @if ($errors->has('email'))
                         <div class="text-center" id="alert" style="padding: 5px;">
-                            <strong class="text-danger">Email / Password anda salah</strong>
+                            <div class="alert alert-danger" role="alert">
+                                Email / Password anda salah
+                            </div>
                         </div>
                         @endif
 
                         @if ($errors->has('password'))
                         <div class="text-center" id="alert" style="padding: 5px;">
-                            <strong class="text-danger">Email / Password anda salah</strong>
+                            <div class="alert alert-danger" role="alert">
+                                Email / Password anda salah
+                            </div>
                         </div>
                         @endif
 
@@ -354,7 +358,7 @@ div.well{
 
         });
 
-        $("#alert").fadeTo(2000, 500).slideUp(500, function() {
+        $("#alert").fadeTo(700, 500).slideUp(500, function() {
             $("#success-alert").slideUp(500);
         });
     </script>

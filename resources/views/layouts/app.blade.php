@@ -112,7 +112,7 @@
     <div class="pull-right hidden-xs">
 
     </div>
-    <strong>M.AldiRenaldy</strong> 
+    <strong>M.AldiRenaldy 2019</strong> 
   </footer>
 
 </div>
