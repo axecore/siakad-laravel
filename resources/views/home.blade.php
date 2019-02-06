@@ -15,10 +15,10 @@
       <div class="row">
         <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="info-box">
-            <span class="info-box-icon bg-aqua"><i class="ion ion-ios-gear-outline"></i></span>
+            <span class="info-box-icon bg-aqua"><i class="ion ion-ios-people"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-number text-muted">CPU Traffic</span>
+              <span class="info-box-number text-muted">Dosen</span>
               <a href="#" class="info-box-text text-muted">Buka Menu <i class="fa fa-arrow-circle-right"></i></a>
             </div>
             <!-- /.info-box-content -->
@@ -28,10 +28,10 @@
         <!-- /.col -->
         <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="info-box">
-            <span class="info-box-icon bg-red"><i class="fa fa-google-plus"></i></span>
+            <span class="info-box-icon bg-red"><i class="ion ion-android-contacts"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">Likes</span>
+              <span class="info-box-number text-muted">Mahasiswa</span>
               <a href="#" class="info-box-text text-muted">Buka Menu <i class="fa fa-arrow-circle-right"></i></a>
             </div>
             <!-- /.info-box-content -->
@@ -49,7 +49,7 @@
 
             <div class="info-box-content">
               <span class="info-box-text">Sales</span>
-              <a href="#" class="info-box-text text-muted">Buka Menu <i class="fa fa-arrow-circle-right"></i></a> 
+              <a href="#" class="info-box-text text-muted">Buka Menu <i class="fa fa-arrow-circle-right"></i></a>
             </div>
             <!-- /.info-box-content -->
           </div>

@@ -15,7 +15,7 @@
 
     <div class="login-box">
       <div class="login-logo">
-        <a href="../../index2.html"> <p class="text-muted" style="height: 20px;" > Login Panel </p> </a>
+        <a href="#"> <p class="text-muted" style="height: 20px;" > Login Administator </p> </a>
       </div>
       <!-- /.login-logo -->
       <div class="login-box-body">
@@ -40,7 +40,21 @@
               </div>
             </div> --}}
             <!-- /.col -->
+
             <div class="col-xs-12">
+
+              @if ($errors->has('email'))
+                <div class="text-center" id="alert" style="padding: 5px;">
+                  <strong class="text-danger">Email / Password anda salah</strong>
+                </div>
+              @endif
+
+              @if ($errors->has('password'))
+                <div class="text-center" id="alert" style="padding: 5px;">
+                  <strong class="text-danger">Email / Password anda salah</strong>
+                </div>
+              @endif
+
               <button type="submit" class="btn btn-primary btn-block btn-flat">Login</button>
               <a href="{{ url('/') }}" class="btn btn-danger btn-block btn-flat">Web</a>
             </div>
@@ -139,6 +153,11 @@ div.well{
         });
 
       });
+
+      $("#alert").fadeTo(2000, 500).slideUp(500, function(){
+          $("#success-alert").slideUp(500);
+      });
+      
     </script>
 
   </body>

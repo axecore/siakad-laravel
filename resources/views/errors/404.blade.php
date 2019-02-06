@@ -68,11 +68,16 @@
             <div class="content">
                 <div class="title m-b-md">
                     Ups... Halaman anda minta tidak ada <br>
-                    @if (Route::has('login'))
-                      <a href="{{ route('home') }}" class="text-muted">Home</a>
-                    @endif
+
+                      <a href="{{ route('home') }}" onclick="kembali()" class="text-muted">Kembali</a>
+
                 </div>
             </div>
         </div>
     </body>
+    <script>
+      function kembali() {
+        window.history.back();
+      }
+    </script>
 </html>
