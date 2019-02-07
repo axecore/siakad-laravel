@@ -1,6 +1,6 @@
 # siakad-laravel (progress)
-> Framework : Laravel
-> Package :[
+> - Framework : Laravel
+> - Package :[
         1. yajra-dataTables, 
         2. Laravel-collective
 ]
