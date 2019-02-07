@@ -3,24 +3,17 @@
 @endsection
 @section('content')
 
-<section class="content-header">
-    <h1>
-        Home
-        <small></small>
-    </h1>
-</section>
-
 <!-- Main content -->
 <section class="content">
     <!-- Info boxes -->
     <div class="row">
         <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="info-box">
-                <span class="info-box-icon bg-aqua"><i class="ion ion-ios-people"></i></span>
+                <span class="info-box-icon bg-aqua"><i class="ion ion-ios-book"></i></span>
 
                 <div class="info-box-content">
-                    <span class="info-box-number text-muted">Dosen</span>
-                    <a href="#" class="info-box-text text-muted">Buka Menu <i class="fa fa-arrow-circle-right"></i></a>
+                    <span class="info-box-number text-muted">Matakuliah</span>
+                    <a href="{{ route('matakuliah.index') }}" class="info-box-text text-muted">Buka Menu <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
                 <!-- /.info-box-content -->
             </div>

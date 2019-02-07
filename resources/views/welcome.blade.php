@@ -128,7 +128,7 @@
             display: block;
             padding: 6px 15px;
             text-decoration: none;
-            color: #333;
+            color: black;
         }
 
         .dropdown>ul a:hover,
@@ -161,15 +161,21 @@
             z-index: 1000;
         }
 
-        img{
-          height: 120px;
-          width: 30%;
+        img {
+            height: 120px;
+            width: 25%;
         }
 
+        body img {
+            -webkit-transition: -webkit-transform 1.1s ease-in-out;
+            transition: transform 1.1s ease-in-out;
+        }
 
-        /*
- Demo purposes only
-*/
+        body img:hover {
+            -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
+
         *,
         *:before,
         *:after {
@@ -203,7 +209,7 @@
                     <i class="fa fa-sign-in"> Login </i>
                 </a>
                 <a href="#close" aria-controls="my-dropdown2" role="button" data-toggle="dropdown" class="close">
-                    Close dropdown
+
                 </a>
             </div>
             @endauth
@@ -212,7 +218,8 @@
 
         <div class="content">
             <div class="title m-b-md">
-                Sistem Informasi Akademik <hr>
+                Sistem Informasi Akademik
+                <hr>
                 <img src="{{ asset('AdminLTE') }}/logo1.png" class="img-fluid text-center" alt="">
             </div>
         </div>
