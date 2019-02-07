@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Laravel</title>
+    <link rel="icon" href="{{ asset('AdminLTE') }}/logo1-1.ico">
     <link rel="stylesheet" href="{{ asset('AdminLTE') }}/bower_components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ asset('AdminLTE') }}/bower_components/bootstrap/dist/css/bootstrap.min.css">
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
 
@@ -159,6 +161,11 @@
             z-index: 1000;
         }
 
+        img{
+          height: 120px;
+          width: 30%;
+        }
+
 
         /*
  Demo purposes only
@@ -205,7 +212,8 @@
 
         <div class="content">
             <div class="title m-b-md">
-                Sistem Informasi Akademik
+                Sistem Informasi Akademik <hr>
+                <img src="{{ asset('AdminLTE') }}/logo1.png" class="img-fluid text-center" alt="">
             </div>
         </div>
     </div>
