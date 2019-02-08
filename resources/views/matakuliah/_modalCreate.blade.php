@@ -62,8 +62,8 @@
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn bg-maroon btn-flat" data-dismiss="modal">Tutup</button>
-                <button type="submit" class="btn bg-olive btn-flat">Simpan</button>
+                <button type="button" class="btn bg-maroon btn-flat" data-dismiss="modal"> <i class="fa fa-close"></i> </button>
+                <button type="submit" class="btn bg-olive btn-flat"> <i class="fa fa-save"></i> </button>
                 {{ Form::close() }}
             </div>
         </div>

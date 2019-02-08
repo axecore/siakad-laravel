@@ -1,13 +1,9 @@
 @extends('layouts.app')
 @section('title')
-Data Matakuliah
+Trash Matakuliah
 @endsection
 
 @section('content')
-
-
-@include('matakuliah._modalCreate')
-@include('matakuliah._modalEdit')
 
 
 <section class="content">
@@ -15,29 +11,14 @@ Data Matakuliah
         <div class="col-xs-12">
             <div class="box">
 
-                @if (Session::has('matakuliahCreate'))
+                @if (Session::has('matakuliahPermanent'))
                 <div class="alert-success text-center" role="alert" id="alert">
-                    <strong> {{ Session::get('matakuliahCreate') }} </strong>
-                </div>
-                @endif
-                @if (Session::has('matakuliahUpdate'))
-                <div class="alert-success text-center" role="alert" id="alert">
-                    <strong> {{ Session::get('matakuliahUpdate') }} </strong>
-                </div>
-                @endif
-                @if (Session::has('matakuliaDelete'))
-                <div class="alert-success text-center" role="alert" id="alert">
-                    <strong> {{ Session::get('matakuliaDelete') }} </strong>
-                </div>
-                @endif
-                @if (Session::has('matakuliahRestore'))
-                <div class="alert-success text-center" role="alert" id="alert">
-                    <strong> {{ Session::get('matakuliahRestore') }} </strong>
+                    <strong> {{ Session::get('matakuliahPermanent') }} </strong>
                 </div>
                 @endif
 
                 <div class="box-header">
-                    <h3 class="box-title"> <i class="fa fa-database"></i> Data Matakuliah</h3>
+                    <h3 class="box-title"> <i class="fa fa-trash"></i> Trash Matakuliah</h3>
                 </div>
 
                 <div class="box-body">
@@ -58,8 +39,7 @@ Data Matakuliah
                     </table>
                 </div>
                 <div class="box-footer">
-                    <a href="#create_mk" id="klik" data-backdrop="static" data-keyboard="false" data-toggle="modal" class="btn bg-navy btn-flat btn-md"><i class="fa fa-plus-square"></i></a>
-                    <a href="{{ route('matakuliah.trash') }}" class="btn bg-navy btn-flat btn-md"> <i class="fa fa-trash-o"></i></a>
+                    <a href="{{ route('matakuliah.index') }}" class="btn btn-md bg-navy btn-flat"> <i class="fa fa-table"></i> </a>
                 </div>
             </div>
 
@@ -70,12 +50,6 @@ Data Matakuliah
 @endsection
 
 @push('scripts')
-
-@if ($errors->any())
-<script type="text/javascript">
-    document.getElementById('klik').click();
-</script>
-@endif
 
 <script>
     $(function() {
@@ -103,7 +77,7 @@ Data Matakuliah
                     "sLast": "Terakhir"
                 }
             },
-            ajax: '/matakuliah/json',
+            ajax: '/matakuliah/trash/json',
             columns: [{
                     data: 'kode_mk',
                     name: 'kode_mk'

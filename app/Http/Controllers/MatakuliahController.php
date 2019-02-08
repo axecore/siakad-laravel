@@ -125,7 +125,7 @@ class MatakuliahController extends Controller
         $update->ket_mk  = $request->input('ket_mk');
         $update->save();
 
-        return redirect()->route('matakuliah.index')->with('matakuliahUpdate', 'Berhasil update matakuliah');
+        return redirect()->route('matakuliah.index')->with('matakuliahUpdate', 'Update data matakuliah berhasil');
     }
 
     /**
@@ -139,5 +139,54 @@ class MatakuliahController extends Controller
         $hapus = Matakuliah::FindorFail($id);
         $hapus->delete();
         return redirect()->route('matakuliah.index')->with('matakuliaDelete', 'Hapus data matakuliah berhasil');
+    }
+
+    public function trash()
+    {
+      return view('matakuliah.trash');
+    }
+
+    public function trash_json()
+    {
+      return DataTables::of(Matakuliah::onlyTrashed()->get())
+                            ->addColumn('action', function ($row) {
+                                      $url_trash = route('matakuliah_trash.restore', $row->kode_mk);
+                                      $action = '
+                                          <div class="text-center">
+                                          <a href="'.$url_trash.'"class="btn btn-md bg-olive bg-flat"> <i class="fa fa-window-restore"></i> </a> || ';
+
+                                      $url_trash_permanent = "/matakuliah/'.$row->kode_mk.'/delete";
+                                      $action .= \Form::open(['route' => ['matakuliah.delete', $row->kode_mk],
+                                          'method' => 'delete',
+                                          'style' => 'display:inline',
+                                          'onsubmit' => 'return confirm("Hapus Data permanen ?")']);
+                                      $action .= '<button type="submit" class="btn btn-md bg-maroon bg-flat" name="button"><i class="fa fa-trash"></i></button>';
+                                      $action .= \Form::close().'</div>';
+
+                                      return $action;
+                                 })
+                            ->make(true);
+    }
+
+    public function restore($id)
+    {
+        $data = Matakuliah::withTrashed()->FindOrFail($id);
+          if ($data) {
+              $data->restore();
+          }
+
+          return redirect()->route('matakuliah.index')->with('matakuliahRestore', 'Restore data matakuliah berhasil');
+
+
+    }
+
+    public function delete_permanent($id)
+    {
+        $data = Matakuliah::withTrashed()->FindOrFail($id);
+          if ($data->trashed()) {
+                $data->forceDelete();
+          }
+
+          return redirect()->route('matakuliah.trash')->with('matakuliahPermanent', 'Hapus permanen matakuliah berhasil');
     }
 }
