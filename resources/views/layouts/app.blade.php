@@ -105,8 +105,8 @@
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li class=""><a href="{{ route('home') }}"><i class="fa fa-home"></i>Home</a></li>
-                            <li class=""><a href="{{ route('matakuliah.index') }}"><i class="ion ion-ios-book"></i>Matakuliah</a></li>
+                            <li class="{{ set_active('home') }}"><a href="{{ route('home') }}"><i class="fa fa-home"></i>Home</a></li>
+                            <li class="{{ set_active('matakuliah.index') }} {{ set_active('matakuliah.trash') }}"><a href="{{ route('matakuliah.index') }}"><i class="ion ion-ios-book"></i>Matakuliah</a></li>
                         </ul>
                     </li>
                     <li><a href="#"><i class="fa fa-book"></i> <span>Menu1</span></a></li>
