@@ -25,8 +25,8 @@
                 <span class="info-box-icon bg-red"><i class="ion ion-android-contacts"></i></span>
 
                 <div class="info-box-content">
-                    <span class="info-box-number text-muted">Mahasiswa</span>
-                    <a href="#" class="info-box-text text-muted">Buka Menu <i class="fa fa-arrow-circle-right"></i></a>
+                    <span class="info-box-number text-muted">Dosen</span>
+                    <a href="{{ route('dosen.index') }}" class="info-box-text text-muted">Buka Menu <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
                 <!-- /.info-box-content -->
             </div>

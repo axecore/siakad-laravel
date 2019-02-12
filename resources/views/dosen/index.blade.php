@@ -1,13 +1,9 @@
 @extends('layouts.app')
 @section('title')
-Data Matakuliah
+Data Dosen
 @endsection
 
 @section('content')
-
-
-@include('matakuliah._modalCreate')
-@include('matakuliah._modalEdit')
 
 
 <section class="content">
@@ -15,9 +11,10 @@ Data Matakuliah
         <div class="col-xs-12">
             <div class="box">
 
-                @if (Session::has('matakuliahCreate'))
+
+                @if (Session::has('dosenCreate'))
                 <div class="alert-success text-center" role="alert" id="alert">
-                    <strong> {{ Session::get('matakuliahCreate') }} </strong>
+                    <strong> {{ Session::get('dosenCreate') }} </strong>
                 </div>
                 @endif
                 @if (Session::has('matakuliahUpdate'))
@@ -37,18 +34,18 @@ Data Matakuliah
                 @endif
 
                 <div class="box-header">
-                    <h3 class="box-title"> <i class="fa fa-database"></i> Data Matakuliah</h3>
+                    <h3 class="box-title"> <i class="fa fa-database"></i> Data Dosen</h3>
                 </div>
 
                 <div class="box-body">
-                    <table id="data-mk" width="100%" class="table table-bordered table-hover">
+                    <table id="data-dosen" width="100%" class="table table-bordered table-hover">
                         <thead>
                             <tr>
-                                <th>Kode Mk</th>
-                                <th>Nama Mk</th>
-                                <th>Jumlah SKS</th>
-                                <th>Keterangan</th>
-                                <th>Pilihan</th>
+                                <th>NIK/NIP</th>
+                                <th>Nama Dosen</th>
+                                <th>Email</th>
+                                <th>No HP</th>
+                                <th>Foto</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -58,7 +55,7 @@ Data Matakuliah
                     </table>
                 </div>
                 <div class="box-footer">
-                    <a href="#create_mk" id="klik" data-backdrop="static" data-keyboard="false" data-toggle="modal" class="btn bg-navy btn-flat btn-md"><i class="fa fa-plus-square"></i></a>
+                    <a href="{{ route('dosen.create') }}" class="btn bg-navy btn-flat btn-md"><i class="fa fa-plus-square"></i></a>
                     <a href="{{ route('matakuliah.trash') }}" class="btn bg-navy btn-flat btn-md"> <i class="fa fa-trash-o"></i></a>
                 </div>
             </div>
@@ -71,15 +68,9 @@ Data Matakuliah
 
 @push('scripts')
 
-@if ($errors->any())
-<script type="text/javascript">
-    document.getElementById('klik').click();
-</script>
-@endif
-
 <script>
     $(function() {
-        $('#data-mk').DataTable({
+        $('#data-dosen').DataTable({
             processing: true,
             serverSide: true,
             lengthMenu: [
@@ -103,26 +94,26 @@ Data Matakuliah
                     "sLast": "Terakhir"
                 }
             },
-            ajax: '{{ route('matakuliah.json') }}',
+            ajax: '{{ route('dosen.json') }}',
             columns: [{
-                    data: 'kode_mk',
-                    name: 'kode_mk'
+                    data: 'nik_nip',
+                    name: 'nik_nip'
                 },
                 {
-                    data: 'nama_mk',
-                    name: 'nama_mk'
+                    data: 'nama',
+                    name: 'nama'
                 },
                 {
-                    data: 'jml_sks',
-                    name: 'jml_sks'
+                    data: 'email',
+                    name: 'email'
                 },
                 {
-                    data: 'ket_mk',
-                    name: 'ket_mk'
+                    data: 'no_hp',
+                    name: 'no_hp'
                 },
                 {
-                    data: 'action',
-                    name: 'action',
+                    data: 'foto',
+                    name: 'foto',
                     orderable: false,
                     searchable: false
                 }

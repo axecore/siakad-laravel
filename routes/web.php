@@ -32,3 +32,7 @@ Route::get('/matakuliah/trash', 'MatakuliahController@trash')->name('matakuliah.
 Route::resource('/matakuliah', 'MatakuliahController');
 
 // end matakuliah module
+
+
+Route::get('/dosen/json', 'DosenController@data_json')->name('dosen.json');
+Route::resource('/dosen', 'DosenController');
