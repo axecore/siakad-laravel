@@ -107,7 +107,7 @@
                         <ul class="treeview-menu">
                             <li class="{{ set_active('home') }}"><a href="{{ route('home') }}"><i class="fa fa-home"></i>Home</a></li>
                             <li class="{{ set_active('matakuliah.index') }} {{ set_active('matakuliah.trash') }}"><a href="{{ route('matakuliah.index') }}"><i class="ion ion-ios-book"></i>Matakuliah</a></li>
-                            <li class="{{ set_active('dosen.index') }} {{ set_active('dosen.create') }}"><a href="{{ route('dosen.index') }}"><i class="ion ion-android-contacts"></i>Dosen</a></li>
+                            <li class="{{ set_active('dosen.index') }} {{ set_active('dosen.create') }} {{ set_active('dosen.edit')}}"><a href="{{ route('dosen.index') }}"><i class="ion ion-android-contacts"></i>Dosen</a></li>
                         </ul>
                     </li>
                     <li><a href="#"><i class="fa fa-book"></i> <span>Menu1</span></a></li>

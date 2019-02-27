@@ -17,7 +17,21 @@ class DosenController extends Controller
                             $img = '<img src="'.$url.'" alr="" width="70px">';
                             return $img;
                         })
-                        ->rawColumns(['foto'])
+                        ->addColumn('action', function ($row) {
+                                  $urlEdit = route('dosen.edit', $row->nik_nip);
+                                  $action = '
+                                      <div class="text-center">
+                                      <a href="'.$urlEdit.'" class="btn btn-md bg-olive bg-flat"> <i class="fa fa-edit"></i> </a> || ';
+
+                                  $action .= \Form::open(['url' => 'matakuliah/'.$row->kode_mk,'method' => 'delete',
+                                      'style' => 'display:inline',
+                                      'onsubmit' => 'return confirm("Hapus Data ?")']);
+                                  $action .= '<button type="submit" class="btn btn-md bg-maroon bg-flat" name="button"><i class="fa fa-trash"></i></button>';
+                                  $action .= \Form::close().'</div>';
+
+                                  return $action;
+                             })
+                        ->rawColumns(['foto', 'action'])
                         ->make(true);
     }
     /**
@@ -88,7 +102,8 @@ class DosenController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = Dosen::FindOrFail($id);
+        return view('dosen.edit', compact('data'));
     }
 
     /**
@@ -100,7 +115,36 @@ class DosenController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+          $except = Dosen::FindOrFail($id);
+          $this->validate($request, [
+              'nik_nip' => 'required|unique:dosen,nik_nip,'.$id.',nik_nip',
+              'nama'    => 'required',
+              'email'   => 'required|unique:dosen,email,'.$except->email.',email',
+              'no_hp'   => 'required',
+              'foto'    => 'sometimes'
+          ]);
+
+          $dosen = Dosen::FindOrFail($id);
+
+          if ($request->foto) {
+              if (file_exists(storage_path('app/public/'.$dosen->foto))) {
+                  \Storage::delete('public/'.$dosen->foto);
+                  $file = $request->file('foto')->store('foto_dosen', 'public');
+                  $dosen->foto = $file;
+              }else {
+                $file = $request->file('foto')->store('foto_dosen', 'public');
+                $dosen->foto = $file;
+              }
+          }
+
+          $dosen->nik_nip = $request->input('nik_nip');
+          $dosen->nama    = $request->input('nama');
+          $dosen->email   = $request->input('email');
+          $dosen->no_hp   = $request->input('no_hp');
+          $dosen->save();
+
+          return redirect()->route('dosen.index')->with('dosenUpdate', 'Berhasil update data Dosen');
+
     }
 
     /**

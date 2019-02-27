@@ -17,9 +17,9 @@ Data Dosen
                     <strong> {{ Session::get('dosenCreate') }} </strong>
                 </div>
                 @endif
-                @if (Session::has('matakuliahUpdate'))
+                @if (Session::has('dosenUpdate'))
                 <div class="alert-success text-center" role="alert" id="alert">
-                    <strong> {{ Session::get('matakuliahUpdate') }} </strong>
+                    <strong> {{ Session::get('dosenUpdate') }} </strong>
                 </div>
                 @endif
                 @if (Session::has('matakuliaDelete'))
@@ -46,6 +46,7 @@ Data Dosen
                                 <th>Email</th>
                                 <th>No HP</th>
                                 <th>Foto</th>
+                                <th>Pilihan</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -56,7 +57,7 @@ Data Dosen
                 </div>
                 <div class="box-footer">
                     <a href="{{ route('dosen.create') }}" class="btn bg-navy btn-flat btn-md"><i class="fa fa-plus-square"></i></a>
-                    <a href="{{ route('matakuliah.trash') }}" class="btn bg-navy btn-flat btn-md"> <i class="fa fa-trash-o"></i></a>
+                    <a href="#" class="btn bg-navy btn-flat btn-md"> <i class="fa fa-trash-o"></i></a>
                 </div>
             </div>
 
@@ -116,6 +117,10 @@ Data Dosen
                     name: 'foto',
                     orderable: false,
                     searchable: false
+                },
+                {
+                    data: 'action',
+                    name: 'action'
                 }
             ]
         });
