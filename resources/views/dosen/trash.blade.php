@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-Data Dosen
+Trash Dosen
 @endsection
 
 @section('content')
@@ -11,26 +11,15 @@ Data Dosen
         <div class="col-xs-12">
             <div class="box">
 
+              @if (Session::has('dosenPermanent'))
+                <div class="alert-success text-center" role="alert" id="alert">
+                    <strong> {{ Session::get('dosenPermanent') }} </strong>
+                </div>
+              @endif
 
-                @if (Session::has('dosenCreate'))
-                <div class="alert-success text-center" role="alert" id="alert">
-                    <strong> {{ Session::get('dosenCreate') }} </strong>
-                </div>
-                @endif
-                @if (Session::has('dosenUpdate'))
-                <div class="alert-success text-center" role="alert" id="alert">
-                    <strong> {{ Session::get('dosenUpdate') }} </strong>
-                </div>
-                @endif
-                @if (Session::has('dosenRestore'))
-                <div class="alert-success text-center" role="alert" id="alert">
-                    <strong> {{ Session::get('dosenRestore') }} </strong>
-                </div>
-                @endif
-
-                <div class="box-header">
-                    <h3 class="box-title"> <i class="fa fa-database"></i> Data Dosen</h3>
-                </div>
+              <div class="box-header">
+                  <h3 class="box-title"> <i class="fa fa-trash"></i> Trash Dosen</h3>
+              </div>
 
                 <div class="box-body">
                     <table id="data-dosen" width="100%" class="table table-bordered table-hover">
@@ -51,8 +40,7 @@ Data Dosen
                     </table>
                 </div>
                 <div class="box-footer">
-                    <a href="{{ route('dosen.create') }}" class="btn bg-navy btn-flat btn-md"><i class="fa fa-plus-square"></i></a>
-                    <a href="{{ route('dosen.trash') }}" class="btn bg-navy btn-flat btn-md"> <i class="fa fa-trash-o"></i></a>
+                    <a href="{{ route('dosen.index') }}" class="btn btn-md bg-navy btn-flat"> <i class="fa fa-table"></i> </a>
                 </div>
             </div>
 
@@ -90,7 +78,7 @@ Data Dosen
                     "sLast": "Terakhir"
                 }
             },
-            ajax: '{{ route('dosen.json') }}',
+            ajax: '{{ route('dosen_trash.json') }}',
             columns: [{
                     data: 'nik_nip',
                     name: 'nik_nip'

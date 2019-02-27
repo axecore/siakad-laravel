@@ -75,6 +75,7 @@ Edit Data Dosen
 
                 <div class="box-footer">
                     <button type="submit" class="btn btn-md btn-flat bg-navy" name="button"><i class="fa fa-save"></i></button>
+                    <a href="{{ route('dosen.index') }}" class="btn btn-md bg-navy btn-flat"> <i class="fa fa-chevron-circle-left"></i> </a>
                 </div>
             {{ Form::close() }}
         </div>

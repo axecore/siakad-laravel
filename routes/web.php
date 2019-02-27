@@ -34,5 +34,14 @@ Route::resource('/matakuliah', 'MatakuliahController');
 // end matakuliah module
 
 
+
+// dosen module
+
 Route::get('/dosen/json', 'DosenController@data_json')->name('dosen.json');
+Route::get('dosen/trash/json', 'DosenController@trash_json')->name('dosen_trash.json');
+Route::get('dosen/{id}/restore', 'DosenController@restore')->name('dosen_trash.restore');
+Route::delete('dosen/{id}/delete', 'DosenController@delete_permanent')->name('dosen.delete');
+Route::get('dosen/trash', 'DosenController@trash')->name('dosen.trash');
 Route::resource('/dosen', 'DosenController');
+
+// end dosen module

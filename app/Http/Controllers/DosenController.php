@@ -23,7 +23,7 @@ class DosenController extends Controller
                                       <div class="text-center">
                                       <a href="'.$urlEdit.'" class="btn btn-md bg-olive bg-flat"> <i class="fa fa-edit"></i> </a> || ';
 
-                                  $action .= \Form::open(['url' => 'matakuliah/'.$row->kode_mk,'method' => 'delete',
+                                  $action .= \Form::open(['url' => 'dosen/'.$row->nik_nip,'method' => 'delete',
                                       'style' => 'display:inline',
                                       'onsubmit' => 'return confirm("Hapus Data ?")']);
                                   $action .= '<button type="submit" class="btn btn-md bg-maroon bg-flat" name="button"><i class="fa fa-trash"></i></button>';
@@ -116,6 +116,7 @@ class DosenController extends Controller
     public function update(Request $request, $id)
     {
           $except = Dosen::FindOrFail($id);
+
           $this->validate($request, [
               'nik_nip' => 'required|unique:dosen,nik_nip,'.$id.',nik_nip',
               'nama'    => 'required',
@@ -125,6 +126,11 @@ class DosenController extends Controller
           ]);
 
           $dosen = Dosen::FindOrFail($id);
+
+          if ($dosen->nik_nip != $request->nik_nip) {
+              abort(404);
+              die;
+          }
 
           if ($request->foto) {
               if (file_exists(storage_path('app/public/'.$dosen->foto))) {
@@ -155,6 +161,61 @@ class DosenController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $dosen = Dosen::FindOrFail($id);
+        $dosen->delete();
+        return redirect()->route('dosen.index')->with('dosenDelete', 'Hapus data dosen berhasil');
+    }
+
+    public function trash()
+    {
+        return view('dosen.trash');
+    }
+
+    public function trash_json()
+    {
+      return DataTables::of(Dosen::onlyTrashed()->get())
+                        ->addColumn('foto', function ($row) {
+                            $url = asset('storage/'.$row->foto);
+                            $img = '<img src="'.$url.'" alr="" width="70px">';
+                            return $img;
+                        })
+                        ->addColumn('action', function ($row) {
+                                  $url_restore = route('dosen_trash.restore', $row->nik_nip);
+                                  $action = '
+                                      <div class="text-center">
+                                      <a href="'.$url_restore.'" class="btn btn-md bg-olive bg-flat"> <i class="fa fa-window-restore"></i> </a> || ';
+
+                                  $action .= \Form::open(['route' => ['dosen.delete', $row->nik_nip],
+                                      'method' => 'delete',
+                                      'style' => 'display:inline',
+                                      'onsubmit' => 'return confirm("Hapus Data permanen ?")']);
+                                  $action .= '<button type="submit" class="btn btn-md bg-maroon bg-flat" name="button"><i class="fa fa-trash"></i></button>';
+                                  $action .= \Form::close().'</div>';
+
+                                  return $action;
+                             })
+                        ->rawColumns(['foto', 'action'])
+                        ->make(true);
+    }
+
+    public function restore($id)
+    {
+        $data = Dosen::withTrashed()->FindorFail($id);
+          if ($data) {
+              $data->restore();
+          }
+
+          return redirect()->route('dosen.index')->with('dosenRestore', 'Restore data dosen berhasil');
+    }
+
+    public function delete_permanent($id)
+    {
+        $data = Dosen::withTrashed()->FindOrFail($id);
+          if ($data) {
+              $data->forceDelete();
+              \Storage::delete('public/'.$data->foto);
+          }
+
+          return redirect()->route('dosen.trash')->with('dosenPermanent', 'Hapus permanen data dosen berhasil');
     }
 }

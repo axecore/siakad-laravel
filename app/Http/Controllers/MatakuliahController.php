@@ -113,6 +113,12 @@ class MatakuliahController extends Controller
     {
 
       $except = Matakuliah::FindOrFail($request->kode_mk);
+
+        if ($except->kode_mk != $request->kode_mk) {
+            abort(404);
+            die;
+        }
+
       $validator = $this->validate($request, [
           'kode_mk' => 'required|unique:matakuliah,kode_mk,'.$except->kode_mk.',kode_mk',
           'nama_mk' => 'required',
@@ -150,10 +156,10 @@ class MatakuliahController extends Controller
     {
       return DataTables::of(Matakuliah::onlyTrashed()->get())
                             ->addColumn('action', function ($row) {
-                                      $url_trash = route('matakuliah_trash.restore', $row->kode_mk);
+                                      $url_restore = route('matakuliah_trash.restore', $row->kode_mk);
                                       $action = '
                                           <div class="text-center">
-                                          <a href="'.$url_trash.'"class="btn btn-md bg-olive bg-flat"> <i class="fa fa-window-restore"></i> </a> || ';
+                                          <a href="'.$url_restore.'"class="btn btn-md bg-olive bg-flat"> <i class="fa fa-window-restore"></i> </a> || ';
 
                                       $url_trash_permanent = "/matakuliah/'.$row->kode_mk.'/delete";
                                       $action .= \Form::open(['route' => ['matakuliah.delete', $row->kode_mk],
