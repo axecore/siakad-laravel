@@ -15,18 +15,17 @@ class MatakuliahController extends Controller
         ->addColumn('action', function ($row) {
 
                   $action = '
-                      <div class="text-center">
-                      <button type="button" class="btn btn-md bg-olive bg-flat" id="edit_klik"
-                      data-kode_mk="'.$row->kode_mk.'"
-                      data-nama_mk="'.$row->nama_mk.'"
-                      data-jml_sks="'.$row->jml_sks.'"
-                      data-ket_mk="'.$row->ket_mk.'"
-                      data-toggle="modal" data-target="#edit_mk" name="button"> <i class="fa fa-edit"></i></button> || ';
+                            <div class="text-center">
+                            <a href="'.route('matakuliah.edit', $row->kode_mk).'" class="btn btn-md bg-olive bg-flat" id="edit_klik"
+                            name="button"> <i class="fa fa-edit"></i></a> || ';
 
                   $action .= \Form::open(['url' => 'matakuliah/'.$row->kode_mk,'method' => 'delete',
-                      'style' => 'display:inline',
-                      'onsubmit' => 'return confirm("Hapus Data ?")']);
-                  $action .= '<button type="submit" class="btn btn-md bg-maroon bg-flat" name="button"><i class="fa fa-trash"></i></button>';
+                            'style' => 'display:inline',
+                            'onsubmit' => 'return confirm("Hapus Data ?")']);
+
+                  $action .= '
+                              <button type="submit" class="btn btn-md bg-maroon bg-flat" name="button"><i class="fa fa-trash"></i></button>';
+
                   $action .= \Form::close().'</div>';
 
                   return $action;
@@ -99,7 +98,8 @@ class MatakuliahController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = Matakuliah::FindorFail($id);
+        return view('matakuliah.edit', compact('data'));
     }
 
     /**

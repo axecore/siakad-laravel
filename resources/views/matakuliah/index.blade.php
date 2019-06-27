@@ -5,11 +5,6 @@ Data Matakuliah
 
 @section('content')
 
-
-@include('matakuliah._modalCreate')
-@include('matakuliah._modalEdit')
-
-
 <section class="content">
     <div class="row">
         <div class="col-xs-12">
@@ -58,7 +53,7 @@ Data Matakuliah
                     </table>
                 </div>
                 <div class="box-footer">
-                    <a href="#create_mk" id="klik" data-backdrop="static" data-keyboard="false" data-toggle="modal" class="btn bg-navy btn-flat btn-md"><i class="fa fa-plus-square"></i></a>
+                    <a href="{{ route('matakuliah.create') }}" id="klik" data-backdrop="static" data-keyboard="false" data-toggle="modal" class="btn bg-navy btn-flat btn-md"><i class="fa fa-plus-square"></i></a>
                     <a href="{{ route('matakuliah.trash') }}" class="btn bg-navy btn-flat btn-md"> <i class="fa fa-trash-o"></i></a>
                 </div>
             </div>
