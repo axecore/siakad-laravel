@@ -11,7 +11,6 @@ Data Dosen
         <div class="col-xs-12">
             <div class="box">
 
-
                 @if (Session::has('dosenCreate'))
                 <div class="alert-success text-center" role="alert" id="alert">
                     <strong> {{ Session::get('dosenCreate') }} </strong>
@@ -33,22 +32,24 @@ Data Dosen
                 </div>
 
                 <div class="box-body">
-                    <table id="data-dosen" width="100%" class="table table-bordered table-hover">
-                        <thead>
-                            <tr>
-                                <th>NIK/NIP</th>
-                                <th>Nama Dosen</th>
-                                <th>Email</th>
-                                <th>No HP</th>
-                                <th>Foto</th>
-                                <th>Pilihan</th>
-                            </tr>
-                        </thead>
-                        <tbody>
+                    <div class="table-responsive">
+                        <table id="data-dosen" width="100%" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>NIK/NIP</th>
+                                    <th>Nama Dosen</th>
+                                    <th>Email</th>
+                                    <th>No HP</th>
+                                    <th>Foto</th>
+                                    <th>Pilihan</th>
+                                </tr>
+                            </thead>
+                            <tbody>
 
-                        </tbody>
+                            </tbody>
 
-                    </table>
+                        </table>
+                    </div>
                 </div>
                 <div class="box-footer">
                     <a href="{{ route('dosen.create') }}" class="btn bg-navy btn-flat btn-md"><i class="fa fa-plus-square"></i></a>

@@ -13,6 +13,7 @@ Tambah Dosen
 
 <section class="content">
     <div class="row">
+      <div class="col-xs-12">
         <div class="box box-primary">
             <div class="box-header with-border">
                 <h3 class="box-title">Tambah Dosen</h3>
@@ -79,6 +80,7 @@ Tambah Dosen
             {{ Form::close() }}
         </div>
     </div>
+  </div>
 </section>
 
 @endsection

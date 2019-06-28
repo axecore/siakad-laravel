@@ -22,21 +22,23 @@ Trash Matakuliah
                 </div>
 
                 <div class="box-body">
-                    <table id="data-mk" width="100%" class="table table-bordered table-hover">
-                        <thead>
-                            <tr>
-                                <th>Kode Mk</th>
-                                <th>Nama Mk</th>
-                                <th>Jumlah SKS</th>
-                                <th>Keterangan</th>
-                                <th>Pilihan</th>
-                            </tr>
-                        </thead>
-                        <tbody>
+                    <div class="table-responsive">
+                        <table id="data-mk" width="100%" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Kode Mk</th>
+                                    <th>Nama Mk</th>
+                                    <th>Jumlah SKS</th>
+                                    <th>Keterangan</th>
+                                    <th>Pilihan</th>
+                                </tr>
+                            </thead>
+                            <tbody>
 
-                        </tbody>
+                            </tbody>
 
-                    </table>
+                        </table>
+                    </div>
                 </div>
                 <div class="box-footer">
                     <a href="{{ route('matakuliah.index') }}" class="btn btn-md bg-navy btn-flat"> <i class="fa fa-table"></i> </a>

@@ -22,22 +22,24 @@ Trash Dosen
               </div>
 
                 <div class="box-body">
-                    <table id="data-dosen" width="100%" class="table table-bordered table-hover">
-                        <thead>
-                            <tr>
-                                <th>NIK/NIP</th>
-                                <th>Nama Dosen</th>
-                                <th>Email</th>
-                                <th>No HP</th>
-                                <th>Foto</th>
-                                <th>Pilihan</th>
-                            </tr>
-                        </thead>
-                        <tbody>
+                    <div class="table-responsive">
+                        <table id="data-dosen" width="100%" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>NIK/NIP</th>
+                                    <th>Nama Dosen</th>
+                                    <th>Email</th>
+                                    <th>No HP</th>
+                                    <th>Foto</th>
+                                    <th>Pilihan</th>
+                                </tr>
+                            </thead>
+                            <tbody>
 
-                        </tbody>
+                            </tbody>
 
-                    </table>
+                        </table>
+                    </div>
                 </div>
                 <div class="box-footer">
                     <a href="{{ route('dosen.index') }}" class="btn btn-md bg-navy btn-flat"> <i class="fa fa-table"></i> </a>
